@@ -33,9 +33,9 @@
   * release-notes
   * MEG
 
-#### Downloading datasets/dataset for a single subject
+#### Downloading datasets/dataset for a single subject via a terminal session
 
->**CAUTION** - These datasets can be quite large (~70GB per subject for all 8 datasets). Therefore, please do make sure to check the space of your nobabackup directory with `nn_storage_quota` command prior to starting the download
+>**CAUTION** - These datasets can be quite large (~70GB per subject for all 8 datasets). Therefore, please do make sure to check the space of your nobabackup directory with `nn_storage_quota` command prior to starting the download. Also, we recommend using a `tmux` or a `screen` session for interactive downloads. 
 
 * Following command will download all of the datasets defined in line 15-22 `download_HCP_1200.py` for a single subject. In this instace, subject id is 996782
 
@@ -61,4 +61,26 @@ $ python download_HCP_1200.py --subeject=996782 --out_dir=/data/output/ --tartas
     #'release-notes':'release-notes',
     #'MEG':'MEG'
     }
+    ```
+#### Downloading datasets via a slurm job
+
+>This method is not recommended for a single subject as it will be easier to do it via terminal session as above.Therefore, deployment should be for (number of subjects) > 1
+
+* Downloading data for hundreds of subjects can be done via a slurm array. This sets an environment variable `$SLURM_ARRAY_TASK_ID`(an integer).The script `get_subject.py` will take that integer and transform it into a subject code. 
+* Following sample slurm script is for hundred subject
+
+    ```bash
+    #!/bin/bash -e
+
+    #SBATCH --account   nesi12345                       #replace this with your NeSI project code
+    #SBATCH --job-name  HCP_download-subject1-100       #job-name can be anything you prefer
+    #SBATCH --time      4:00:00                         #timelimit(walltime)in HH:MM:SS
+    #SBATCH --array     0-99                            #array is for hundred subjects : starts from 0
+
+    module purge
+    module load Python/2.7.18-gimkl-2020
+
+    SUBJECT=$(python utils/get_subject.py 2>&1)
+
+    python download_HCP_1200.py --subject=$SUBJECT --out_dir=/data/output/ --tartasks
     ```
