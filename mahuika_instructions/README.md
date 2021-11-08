@@ -81,7 +81,7 @@ $ python download_HCP_1200.py --subeject=996782 --out_dir=/data/output/ --tartas
     #SBATCH --output    slurmout/hcp_%j.%a.out          # create a directory name "slurmout" in the current working directory and redirect slurm .out files to it
 
     module purge
-    module load Python/2.7.18-gimkl-2020
+    module load Python/2.7.18-gimkl-2020a
 
     SUBJECT=$(python get_subject.py 2>&1)
 
