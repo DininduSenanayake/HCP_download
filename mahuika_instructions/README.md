@@ -48,7 +48,7 @@ $ python download_HCP_1200.py --subject=996782 --out_dir=/data/output/
 * If the downloaded data to be used at a later date and required to be stored in comprresed format, use `--tartasks` flag
 
 ```bash
-$ python download_HCP_1200.py --subeject=996782 --out_dir=/data/output/ --tartasks
+$ python download_HCP_1200.py --subject=996782 --out_dir=/data/output/ --tartasks
 ```
 * If you don't want to download all the datasets which is probably the case and recommended, comment out the ones which you want to exclude from `download_HCP_1200.py` prior to executing the command.For an example, if the databases of interst are `3T_unprocessed` & `7T_unprocessed`, then open `download_HCP_1200.py` file with a text editor and comment out the other 6 definitions with # .i.e. 
 
