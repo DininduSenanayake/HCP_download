@@ -16,7 +16,8 @@
 * Recommend using `Python/2.7.18-gimkl-2020` module for all of the processees
 * Required Python Packages are *pandas*, *os*, *shutil* & *tarfile*. All but *pandas* comes with the python module. *pandas* can be installed via (or any other package which might be needed for future iterations) 
 
-    ```bash 
+    ```bash
+    $ module purge
     $ module load Python/2.7.18-gimkl-2020
     $ pip install --user pandas
             
