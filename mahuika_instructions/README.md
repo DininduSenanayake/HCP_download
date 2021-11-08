@@ -40,12 +40,14 @@
 >**CAUTION** - These datasets can be quite large (~70GB per subject for all 8 datasets). Therefore, please do make sure to check the space of your nobabackup directory with `nn_storage_quota` command prior to starting the download. Also, we recommend using a `tmux` or a `screen` session for interactive downloads. 
 
 * Following command will download all of the datasets defined in line 15-22 `download_HCP_1200.py` for a single subject. In this instace, subject id is 996782
+* Use a path in nobackup (highly recommended) for `--out_dir=`
 
 ```bash
 $ module load Python/2.7.18-gimkl-2020
 $ python download_HCP_1200.py --subject=996782 --out_dir=/data/output/
 ```
-* If the downloaded data to be used at a later date and required to be stored in comprresed format, use `--tartasks` flag
+* If the downloaded data to be used at a later date and required to be stored in comprresed format, use `--tartasks` flag. 
+* Use a path in nobackup (highly recommended) for `--out_dir=`
 
 ```bash
 $ python download_HCP_1200.py --subject=996782 --out_dir=/data/output/ --tartasks
