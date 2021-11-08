@@ -78,6 +78,7 @@ $ python download_HCP_1200.py --subeject=996782 --out_dir=/data/output/ --tartas
     #SBATCH --job-name  HCP_download-subject1-100       #job-name can be anything you prefer
     #SBATCH --time      4:00:00                         #timelimit(walltime)in HH:MM:SS
     #SBATCH --array     0-99                            #array is for hundred subjects : starts from 0
+    #SBATCH --output    slurmout/hcp_%j.%a.out          # create a directory name "slurmout" in the current working directory and redirect slurm .out files to it
 
     module purge
     module load Python/2.7.18-gimkl-2020
